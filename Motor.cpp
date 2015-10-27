@@ -1,7 +1,7 @@
 #include "personaje.cpp"
 #include <iostream>
 #include <string>
-//	comentario de prueba
+
 using namespace std;
 
 class motorx{
