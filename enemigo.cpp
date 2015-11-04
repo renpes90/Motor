@@ -26,46 +26,46 @@ public:
 	
 };
 
-void Personaje::setVida(int vidax){
+void Enemigo::setVida(int vidax){
 	this->vida=vidax;
 }
 
-void Personaje::setDano(int danox){
+void Enemigo::setDano(int danox){
 	this->dano=danox;
 }
 
-void Personaje::setEnergia(int energiax){
+void Enemigo::setEnergia(int energiax){
 	this->energia=energiax;
 }
 
-void Personaje::incrementarEnergia(int incrementox){
+void Enemigo::incrementarEnergia(int incrementox){
 	energia+=incrementox;
 }
 
-void Personaje::setNombre(string nomx){
+void Enemigo::setNombre(string nomx){
 	this->nombre=nomx;
 }
 
-void Personaje::setTipo(string tipox){
+void Enemigo::setTipo(string tipox){
 	this->tipo=tipox;
 }
 
-string Personaje::getNombre(){
+string Enemigo::getNombre(){
 	return nombre;
 }
 
-string Personaje::getTipo(){
+string Enemigo::getTipo(){
 	return tipo;
 }
 
-int Personaje::getVida(){
+int Enemigo::getVida(){
 	return vida;
 }
 
-int Personaje::getDano(){
+int Enemigo::getDano(){
 	return dano;
 }
 
-int Personaje::getEnergia(){
+int Enemigo::getEnergia(){
 	return energia;
 }
