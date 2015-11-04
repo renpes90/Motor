@@ -6,6 +6,7 @@ class Personaje{
 private:
 	int vida;
 	int dano;
+	int energia;
 	string nombre;
 	string tipo;
 	
@@ -13,10 +14,13 @@ public:
 	//Personaje();
 	void setVida(int);
 	void setDano(int);
+	void setEnergia(int);
+	void incrementarEnergia(int);
 	void setNombre(string);
 	void setTipo(string);
 	int getVida();
 	int getDano();
+	int getEnergia();
 	string getNombre();
 	string getTipo();
 	
@@ -30,6 +34,13 @@ void Personaje::setDano(int danox){
 	this->dano=danox;
 }
 
+void Personaje::setEnergia(int energiax){
+	this->energia=energiax;
+}
+
+void Personaje::incrementarEnergia(int incrementox){
+	energia+=incrementox;
+}
 
 void Personaje::setNombre(string nomx){
 	this->nombre=nomx;
@@ -53,4 +64,8 @@ int Personaje::getVida(){
 
 int Personaje::getDano(){
 	return dano;
+}
+
+int Personaje::getEnergia(){
+	return energia;
 }

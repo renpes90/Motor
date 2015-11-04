@@ -14,6 +14,7 @@ public:
 	void alta();
 	void imprimir();
 	void menu();
+	void restaurarE();
 };
 
 motorx::motorx(){
@@ -38,10 +39,12 @@ void motorx::alta(){
 		per[motor].setDano(dano);
 		per[motor].setNombre(nom);
 		per[motor].setTipo(tipo);
+		per[motor].setEnergia(20);
 		motor++;
-		
+		cout<<"-------------------------"<<endl;
 	}else{
 		cout<<"Lista llena"<<endl;
+		cout<<"-------------------------"<<endl;
 	}
 }
 
@@ -52,7 +55,28 @@ void motorx::imprimir(){
 		cout<<"Tipo: "<<per[i].getTipo()<<endl;
 		cout<<"Vida: "<<per[i].getVida()<<endl;
 		cout<<"Dano: "<<per[i].getDano()<<endl;
+		cout<<"Energia: "<<per[i].getEnergia()<<endl;
+		cout<<"-------------------------"<<endl;
 	}
+}
+
+void motorx::restaurarE(){
+	int a;
+	cout<<"Que personaje restaurara energia?"<<endl;
+	cin>>a;
+	a-=1;
+	
+	if (a>>motor){
+		cout<<"No existe el personaje"<<endl;
+	}else{
+		cout<<"Personaje: "<<per[a].getNombre()<<endl;
+		cout<<"Energia actual: "<<per[a].getEnergia()<<endl;
+		cout<<"Recargando energia..."<<endl;
+		per[a].incrementarEnergia(5);
+		cout<<"Energia despues de la recargar: "<<per[a].getEnergia()<<endl;
+		cout<<"-------------------------"<<endl;
+	}
+	
 }
 
 void motorx::menu(){
@@ -60,7 +84,9 @@ void motorx::menu(){
 	cout<<"1. Alta"<<endl;
 	//cout<<"2. Buscar"<<endl;
 	cout<<"2. Imprimir"<<endl;
+	cout<<"3. Aumentar energia"<<endl;
 	cin>>op;
+	cout<<"-------------------------"<<endl;
 	switch(op){
 		case 1:
 			alta();
@@ -71,6 +97,9 @@ void motorx::menu(){
 			menu();
 			break;
 		case 3:	
+			restaurarE();
+			menu();
+			break;
 			//exit(0);
 		default:
 		//cout<<"ola kase"<<endl;
