@@ -115,36 +115,41 @@ void motorx::restaurarE(){
 
 void motorx::pelea(){
 	int i;
+	int eli, vida1, vida2, dano1, dano2;
 	for(i=0; i<motor; i++){
-		cout<<"Nombre: "<<per[i].getNombre()<<endl;
-		cout<<"Tipo: "<<per[i].getTipo()<<endl;
-		cout<<"Vida: "<<per[i].getVida()<<endl;
-		cout<<"Dano: "<<per[i].getDano()<<endl;
-		cout<<"Energia: "<<per[i].getEnergia()<<endl;
-		cout<<"-------------------------"<<endl;
+		
+		
+		//////////////////////Provisional
+		//getVida() especifica??
+		vida1 = per[i].getVida();
+		dano1 = per[i].getDano();
+		dano2 = en[i].getDano();
+		vida2 = en[i].getVida();
+		
+		cout<< vida1 <<endl;
+		cout<< vida2 <<endl;
+		cout<< dano1 <<endl;
+		cout<< dano2 <<endl;
 	}
-	
-	int eli;
-	//////////////////////Provisional
-	//getVida() especifica??
-	int vida1 = per[i].getVida();
-	int vida2 = per[i].getVida();
 	/////////////////////
 	while (vida1>0 && vida2>0){
 		eli = rand() % 2 + 1;
 		if (eli==2){
 			cout<<"Has hecho danio "<<endl;
-			vida2=vida2-per[i].getDano();
+			vida2=vida2-dano1;
 			
 		}else{
 			cout<<"Has recibido danio "<<endl;
-			vida2=vida2-en[i].getDano();
+			vida1=vida1-dano2;
 		}
 	}
 	if (vida1<=0){
 		cout<<"Has perdido "<<endl;
+		per[motor].setVida(vida1);
+		
 	}else if(vida2<=0){
 		cout<<"Has ganado "<<endl;
+		en[motor].setVida(vida2);
 	}
 	
 }
