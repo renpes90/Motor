@@ -8,7 +8,7 @@ using namespace std;
 
 class motorx{
 private:
-	
+//omis
 public:
 	int motor;
 	Personaje per[10];
