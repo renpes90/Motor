@@ -1,0 +1,210 @@
+#include <cstdlib>
+#include <iostream>
+#include <iomanip>
+
+using namespace std;
+
+void displayBoard(char userGrid[][4]);
+
+void cinSafeInt(int &val)
+{
+	cin >> val;
+	
+	if (cin.fail())
+	{
+		cin.clear();
+		cin.ignore(100,'\n');
+	}
+}
+
+void displayBoard(char userGrid[][4])
+{
+	cout << endl;
+	cout << "         Columna         " << endl << endl; 
+	
+	for (int i = 0; i < 6; i++)
+	{ 
+		cout << "Fila " << i+1 << "     ";
+		for (int q = 0; q < 4; q++)
+		{
+			cout << userGrid[i][q];
+			if (q == 3)
+			{
+				cout << endl;
+			}
+		}
+	}
+}
+
+int main ()
+{
+	
+	cout << endl << endl << "        ||||||JUEGO DE BATALLA NAVAL||||||" << endl << endl;
+	cout << "Hay tres tipos de barco. Uno de 2 espacios, otro de 3 y uno de 4. "
+		<< endl << endl;
+	
+	int row, col, hitA=0, hitB=0, value, hitC=0, tries=0, sunk=0;
+	
+	
+	char userGrid[6][4] = {{'O','O','O','O'},
+	{'O','O','O','O'},
+	{'O','O','O','O'},
+	{'O','O','O','O'},
+	{'O','O','O','O'},
+	{'O','O','O','O'}};
+	
+	
+	int board[6][4] = {
+	{1,1,1,1},
+	{1,3,1,4},
+	{1,3,1,4},
+	{1,1,1,4},
+	{1,1,1,4},
+	{2,2,2,1}};
+	
+	
+do
+	{                      
+		
+		
+		cout << endl << endl << "Esta es la vista del tablero ";
+		cout << endl;
+		
+		displayBoard(userGrid);
+		
+		
+		cout << endl << endl << "Elije entre las filas (1-6): ";
+		cinSafeInt(row);
+		
+		
+		cout << "Elije entre las columnas (1-4): " ;
+		cinSafeInt(col);
+		
+		cout << endl;
+		
+		if (col > 0 && col < 5)
+		{
+			if (row > 0 && row < 7)
+			{   
+				value = board[row-1][col-1];
+				
+				
+				
+				
+				
+				
+				if (value == 1)
+				{
+					cout << "Has fallado ";
+					tries++;
+				}
+				
+				
+				else if (value == 2)
+				{
+					cout << ">>Le has dado al barco 1. ";
+					
+					tries++;
+					hitA++;
+					
+					userGrid[row-1][col-1] = 'X';
+					board[row-1][col-1] = 5;
+					
+					if (hitA == 3)
+					{
+						cout << ">>Has undido el barco 1!<<";
+						hitA = 0;
+						sunk++;
+					}
+					
+					else
+					{
+						cout << 3 - hitA << " golpes más y podras undirlo.<< ";
+						
+						
+					}
+				}
+				
+				else if (value == 3)
+				{
+					cout << ">>Le has dado al barco 2. ";  
+					
+					tries++;            
+					hitB++;
+					
+					userGrid[row-1][col-1] = 'X';
+					board[row-1][col-1] = 5;
+					
+					if (hitB == 2)
+					{
+						cout << ">>Has undido el barco 2!<<" << endl;
+						hitB = 0;
+						sunk++;
+					}
+					
+					else
+					{
+						cout << 2 - hitB << " golpes más y podras undirlo.<< ";
+						
+						
+					}
+				}
+				
+				else if (value == 4)
+				{ 
+					cout << ">>Le has dado al barco 3. ";  
+					
+					tries++;
+					hitC++;
+					
+					userGrid[row-1][col-1] = 'X';
+					board[row-1][col-1] = 5;
+					
+					if (hitC == 4)
+					{
+						cout << ">>Has undido el barco 3!<<" << endl;
+						hitC = 0;
+						sunk++;
+					}
+					
+					else
+					{
+						cout << 4 - hitC << " golpes más y podras undirlo.<< ";
+						
+					}
+				}
+				
+				else if (value == 5)
+				{
+					cout << endl << "Ya habias elegido ese espacio" << endl;
+					
+				}
+			}
+			
+		}
+		
+		else 
+		{
+			cout << endl << "Ingrese una fila y columna valida" << endl << endl;
+		}
+		
+		
+		if (sunk == 3)
+		{
+			cout << endl;
+			
+			displayBoard(userGrid);
+			
+			cout << endl << endl << "Felicidades ya has ganado! " 
+				<< endl << endl << "Total de intentos: " << tries << endl;  
+			
+		}
+	}
+	
+	
+	
+while (sunk < 3);
+	
+	system("PAUSE");
+	return EXIT_SUCCESS;
+}
