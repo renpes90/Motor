@@ -2,7 +2,7 @@
 #include <string>
 using namespace std;
 
-class Personaje{
+class Base{
 private:
 	int vida;
 	int dano;
@@ -26,46 +26,46 @@ public:
 	
 };
 
-void Personaje::setVida(int vidax){
+void Base::setVida(int vidax){
 	this->vida=vidax;
 }
 
-void Personaje::setDano(int danox){
+void Base::setDano(int danox){
 	this->dano=danox;
 }
 
-void Personaje::setEnergia(int energiax){
+void Base::setEnergia(int energiax){
 	this->energia=energiax;
 }
 
-void Personaje::incrementarEnergia(int incrementox){
+void Base::incrementarEnergia(int incrementox){
 	energia+=incrementox;
 }
 
-void Personaje::setNombre(string nomx){
+void Base::setNombre(string nomx){
 	this->nombre=nomx;
 }
 
-void Personaje::setTipo(string tipox){
+void Base::setTipo(string tipox){
 	this->tipo=tipox;
 }
 
-string Personaje::getNombre(){
+string Base::getNombre(){
 	return nombre;
 }
 
-string Personaje::getTipo(){
+string Base::getTipo(){
 	return tipo;
 }
 
-int Personaje::getVida(){
+int Base::getVida(){
 	return vida;
 }
 
-int Personaje::getDano(){
+int Base::getDano(){
 	return dano;
 }
 
-int Personaje::getEnergia(){
+int Base::getEnergia(){
 	return energia;
 }

@@ -1,5 +1,4 @@
-#include "personaje.cpp"
-#include "enemigo.cpp"
+#include "base.cpp"
 #include <stdlib.h>
 #include <iostream>
 #include <string>
@@ -11,10 +10,11 @@ private:
 //omis
 public:
 	int motor;
-	Personaje per[10];
-	Enemigo en[10];
+	Base per[10];
+	Base en[10];
 	motorx();
-	void alta();
+	void altaPer();
+	void altaEn();
 	void imprimir();
 	void menu();
 	void restaurarE();
@@ -22,15 +22,15 @@ public:
 };
 
 motorx::motorx(){
-	cout<<"Hola mundo"<<endl;
+	//cout<<"Hola mundo"<<endl;
 	motor=0;
 	menu();
 }
 
-void motorx::alta(){
+void motorx::altaPer(){
 	if(motor < 10){
-		int vida, dano, vidaE, danoE;
-		string nom,tipo, nomE, tipoE;
+		int vida, dano;
+		string nom,tipo;
 		cout<<"-------------------------"<<endl;
 		cout<<"PERSONAJE"<<endl;
 		cout<<"-------------------------"<<endl;
@@ -47,6 +47,17 @@ void motorx::alta(){
 		per[motor].setNombre(nom);
 		per[motor].setTipo(tipo);
 		per[motor].setEnergia(20);
+		cout<<"-------------------------"<<endl;
+	}else{
+		cout<<"Lista llena"<<endl;
+		cout<<"-------------------------"<<endl;
+	}
+}
+
+void motorx::altaEn(){
+	if(motor < 10){
+		int vidaE, danoE;
+		string nomE, tipoE;
 		cout<<"-------------------------"<<endl;
 		cout<<"ENEMIGO"<<endl;
 		cout<<"-------------------------"<<endl;
@@ -157,29 +168,34 @@ void motorx::pelea(){
 
 void motorx::menu(){
 	int op;
-	cout<<"1. Alta"<<endl;
+	cout<<"1. Dar de Alta Personaje"<<endl;
+	cout<<"2. Dar de Alta Enemigo"<<endl;
 	//cout<<"2. Buscar"<<endl;
-	cout<<"2. Imprimir"<<endl;
-	cout<<"3. Aumentar energia"<<endl;
-	cout<<"4. Pelea"<<endl;
+	cout<<"3. Imprimir"<<endl;
+	cout<<"4. Aumentar energia"<<endl;
+	cout<<"5. Pelea"<<endl;
 	cin>>op;
 	cout<<"-------------------------"<<endl;
 	switch(op){
 	case 1:
-		alta();
+		altaPer();
 		menu();
 		break;
 	case 2:
+		altaEn();
+		menu();
+		break;
+	case 3:
 		imprimir();
 		menu();
 		break;
-	case 3:	
+	case 4:	
 		restaurarE();
 		menu();
 		break;
 		
 		
-	case 4:
+	case 5:
 		pelea();
 		menu();
 		break;
