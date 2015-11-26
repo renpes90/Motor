@@ -181,12 +181,16 @@ do
 					
 				}
 			}
+			else 
+			{
+				cout << endl << ">>Ingrese una fila y columna valida" << endl << endl;
+			}
 			
 		}
 		
 		else 
 		{
-			cout << endl << "Ingrese una fila y columna valida" << endl << endl;
+			cout << endl << ">>Ingrese una fila y columna valida" << endl << endl;
 		}
 		
 		
